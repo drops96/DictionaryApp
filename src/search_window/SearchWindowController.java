@@ -1,14 +1,13 @@
 package search_window;
 
+import dictionary.Dictionary;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -24,12 +23,18 @@ public class SearchWindowController {
     @FXML
     private MenuItem openDictionary;
     @FXML
+    private Button searchButton;
+    @FXML
+    private TextField wordText;
+    @FXML
+    private TextArea translationArea;
+    @FXML
     private void initialize() {
         returnButton.setOnAction(this::onReturnButton);
         quitMenu.setOnAction(this::onQuitMenu);
         aboutMenu.setOnAction(this::onAboutMenu);
         openDictionary.setOnAction(this::onopenDictionary);
-
+        searchButton.setOnAction(this::onSearch);
 
     }
 
@@ -62,4 +67,7 @@ public class SearchWindowController {
         alert.showAndWait();
     }
 
+    private void onSearch(ActionEvent e){
+        translationArea.setText(Dictionary.getEngDictionary().search(wordText.getText()));
+    }
 }

@@ -1,5 +1,6 @@
 package app;
 
+import dictionary.Dictionary;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,5 +20,8 @@ public class DictionaryApp extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
+        Dictionary.getEngDictionary().insert("cat", "kot");
+        Dictionary.getEngDictionary().insert("mouse", "mysz");
+        Dictionary.getEngDictionary().insert("car", "samochod");
     }
 }
