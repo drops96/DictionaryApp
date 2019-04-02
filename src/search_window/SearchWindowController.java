@@ -35,7 +35,12 @@ public class SearchWindowController {
         aboutMenu.setOnAction(this::onAboutMenu);
         openDictionary.setOnAction(this::onopenDictionary);
         searchButton.setOnAction(this::onSearch);
-
+        Dictionary.getEngDictionary().insert("cat", "kot");
+        Dictionary.getEngDictionary().insert("mouse", "mysz");
+        Dictionary.getEngDictionary().insert("car", "samochod");
+        Dictionary.getEngDictionary().insert("crow", "wrona");
+        Dictionary.getEngDictionary().insert("elephant", "slon");
+        Dictionary.getEngDictionary().insert("yeti", "yeti");
     }
 
     private void onReturnButton(ActionEvent e) {
