@@ -1,9 +1,9 @@
 package dictionary;
 
-public class Trie {
+public class EngTrie {
     EngNode root;
 
-    Trie() {
+    EngTrie() {
         root = new EngNode();
     }
 

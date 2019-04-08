@@ -29,18 +29,23 @@ public class SearchWindowController {
     @FXML
     private TextArea translationArea;
     @FXML
+    private ChoiceBox lang;
+
+    @FXML
     private void initialize() {
         returnButton.setOnAction(this::onReturnButton);
         quitMenu.setOnAction(this::onQuitMenu);
         aboutMenu.setOnAction(this::onAboutMenu);
         openDictionary.setOnAction(this::onopenDictionary);
         searchButton.setOnAction(this::onSearch);
+        lang.getSelectionModel().select(0);
         Dictionary.getEngDictionary().insert("cat", "kot");
         Dictionary.getEngDictionary().insert("mouse", "mysz");
         Dictionary.getEngDictionary().insert("car", "samochod");
         Dictionary.getEngDictionary().insert("crow", "wrona");
         Dictionary.getEngDictionary().insert("elephant", "slon");
         Dictionary.getEngDictionary().insert("yeti", "yeti");
+        Dictionary.getEngDictionary().insert("cat", "kocisko");
     }
 
     private void onReturnButton(ActionEvent e) {

@@ -1,14 +1,12 @@
 package add_edit_window;
 
+import dictionary.Dictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -27,6 +25,14 @@ public class AddEditWindowController {
     private Button addWordButton;
     @FXML
     private MenuItem openDictionary;
+    @FXML
+    private TextField translationText;
+    @FXML
+    private TextField wordText;
+    @FXML
+    private ChoiceBox sourceLang;
+    @FXML
+    private ChoiceBox resultLang;
 
     @FXML
     private void initialize() {
@@ -36,6 +42,8 @@ public class AddEditWindowController {
         addTranslateButton.setOnAction(this::onAddTranslateButton);
         addWordButton.setOnAction(this::onAddWordButton);
         openDictionary.setOnAction(this::onopenDictionary);
+        sourceLang.getSelectionModel().select(0);
+        resultLang.getSelectionModel().select(1);
     }
 
 
@@ -72,9 +80,10 @@ public class AddEditWindowController {
 
 
     private void onAddWordButton(ActionEvent e) {
+        Dictionary.getEngDictionary().insert(wordText.getText(), translationText.getText());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Komunikat");
-        alert.setHeaderText("Dodano tłumaczenie ");
+        alert.setHeaderText("Dodano do słownika!");
         alert.showAndWait();
     }
 
