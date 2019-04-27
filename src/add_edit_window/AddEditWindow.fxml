@@ -61,7 +61,6 @@
             </ChoiceBox>
                 <TextField fx:id="wordText" promptText="Wprowadź słowo..." GridPane.columnIndex="2" />
                 <TextField fx:id="translationText" promptText="Wprowadź słowo..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Button fx:id="addTranslateButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Dodaj znaczenie" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                 <Button fx:id="returnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Powrót do menu" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                 <Button fx:id="addWordButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Dodaj do słownika" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                 <Label GridPane.columnIndex="1" GridPane.rowIndex="1" />

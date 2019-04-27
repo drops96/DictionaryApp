@@ -28,7 +28,7 @@ public class EngTrie {
         //Oznacz koniec wyrazu
         p.isEnd=true;
         //Ustaw tlumaczenie
-        p.translation = translation;
+        p.addTranslation(translation);
     }
 
     public String search(String word) {
@@ -37,7 +37,7 @@ public class EngTrie {
             return "Nie znaleziono!";
         }else{
             if(p.isEnd)
-                return p.translation;
+                return p.getTranslations();
         }
         return null;
     }

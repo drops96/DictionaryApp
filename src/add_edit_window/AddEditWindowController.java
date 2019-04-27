@@ -20,8 +20,6 @@ public class AddEditWindowController {
     @FXML
     private GridPane mainPane;
     @FXML
-    private Button addTranslateButton;
-    @FXML
     private Button addWordButton;
     @FXML
     private MenuItem openDictionary;
@@ -39,7 +37,6 @@ public class AddEditWindowController {
         returnButton.setOnAction(this::onReturnButton);
         quitMenu.setOnAction(this::onQuitMenu);
         aboutMenu.setOnAction(this::onAboutMenu);
-        addTranslateButton.setOnAction(this::onAddTranslateButton);
         addWordButton.setOnAction(this::onAddWordButton);
         openDictionary.setOnAction(this::onopenDictionary);
         sourceLang.getSelectionModel().select(0);
@@ -87,10 +84,5 @@ public class AddEditWindowController {
         alert.showAndWait();
     }
 
-    private void onAddTranslateButton(ActionEvent e) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Test");
-        alert.showAndWait();
-    }
 }
 
