@@ -3,14 +3,14 @@ package dictionary;
 import java.util.ArrayList;
 import java.util.List;
 
-class EngNode {
-    EngNode[] arr;
+class TrieNode {
+    TrieNode[] arr;
     boolean isEnd;
     private List<String> translations;
 
-    EngNode() {
+    TrieNode(int size) {
         //26 bo tyle ma angielski alfabet
-        arr = new EngNode[26];
+        arr = new TrieNode[size];
         translations = new ArrayList<>();
     }
 
