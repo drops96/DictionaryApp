@@ -50,7 +50,7 @@ public class Trie {
         TrieNode p = root;
         for(int i=0; i<s.length(); i++){
             char c= s.charAt(i);
-            int index = c-'a';
+            int index = alphabet.getCharIndex(c);
             if(p.arr[index]!=null){
                 p = p.arr[index];
             }else{

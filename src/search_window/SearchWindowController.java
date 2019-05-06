@@ -2,15 +2,11 @@ package search_window;
 
 import dictionary.Dictionary;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SearchWindowController {
@@ -39,13 +35,7 @@ public class SearchWindowController {
         openDictionary.setOnAction(this::onopenDictionary);
         searchButton.setOnAction(this::onSearch);
         lang.getSelectionModel().select(0);
-        Dictionary.getEngDictionary().insert("cat", "kot");
-        Dictionary.getEngDictionary().insert("mouse", "mysz");
-        Dictionary.getEngDictionary().insert("car", "samochod");
-        Dictionary.getEngDictionary().insert("crow", "wrona");
-        Dictionary.getEngDictionary().insert("elephant", "slon");
-        Dictionary.getEngDictionary().insert("yeti", "yeti");
-        Dictionary.getEngDictionary().insert("cat", "kocisko");
+
     }
 
     private void onReturnButton(ActionEvent e) {
@@ -78,6 +68,13 @@ public class SearchWindowController {
     }
 
     private void onSearch(ActionEvent e){
-        translationArea.setText(Dictionary.getEngDictionary().search(wordText.getText()));
+        //0: ang-pol
+        if (lang.getSelectionModel().isSelected(0)){
+            translationArea.setText(Dictionary.getEngDictionary().search(wordText.getText().toLowerCase()));
+        }
+        //1: pol-ang
+        else if (lang.getSelectionModel().isSelected(1)){
+            translationArea.setText(Dictionary.getPolishDictionary().search(wordText.getText().toLowerCase()));
+        }else throw new IllegalArgumentException("Brak wsparcia wybranego słownika!");
     }
 }

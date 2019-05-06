@@ -1,5 +1,6 @@
 package main_window;
 
+import dictionary.Dictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,16 @@ public class MainWindowController {
             quitMenu.setOnAction(this::onQuitMenu);
             aboutMenu.setOnAction(this::onAboutMenu);
             openDictionary.setOnAction(this::onopenDictionary);
+            Dictionary.getEngDictionary().insert("cat", "kot");
+            Dictionary.getEngDictionary().insert("mouse", "mysz");
+            Dictionary.getEngDictionary().insert("car", "samochod");
+            Dictionary.getEngDictionary().insert("crow", "wrona");
+            Dictionary.getEngDictionary().insert("elephant", "slon");
+            Dictionary.getEngDictionary().insert("yeti", "yeti");
+            Dictionary.getEngDictionary().insert("cat", "kocisko");
+            Dictionary.getPolishDictionary().insert("żaba", "frog");
+            Dictionary.getPolishDictionary().insert("kot", "cat");
+            Dictionary.getPolishDictionary().insert("kot", "kitten");
     }
 
     private void onAddButton(ActionEvent e) {
