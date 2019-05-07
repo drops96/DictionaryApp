@@ -42,17 +42,18 @@ public class MainWindowController {
             quitMenu.setOnAction(this::onQuitMenu);
             aboutMenu.setOnAction(this::onAboutMenu);
             openDictionary.setOnAction(this::onopenDictionary);
-            Dictionary.getEngDictionary().insert("cat", "kot");
             Dictionary.getEngDictionary().insert("mouse", "mysz");
             Dictionary.getEngDictionary().insert("car", "samochod");
             Dictionary.getEngDictionary().insert("crow", "wrona");
             Dictionary.getEngDictionary().insert("elephant", "slon");
             Dictionary.getEngDictionary().insert("yeti", "yeti");
-            Dictionary.getEngDictionary().insert("cat", "kocisko");
-            Dictionary.getPolishDictionary().insert("żaba", "frog");
+            Dictionary.getEngDictionary().insert("cat", "kot");
             Dictionary.getPolishDictionary().insert("kot", "cat");
             Dictionary.getPolishDictionary().insert("kot", "kitten");
             GetFromFile.fromAngToPol();
+            GetFromFile.fromPolToAng();
+
+
     }
 
     private void onAddButton(ActionEvent e) {
