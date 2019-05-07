@@ -87,12 +87,12 @@ public class AddEditWindowController {
         if (sourceLang.getSelectionModel().isSelected(0) && resultLang.getSelectionModel().isSelected(1)){
             Dictionary.getEngDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
             Dictionary.getPolishDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
-            alert.setHeaderText("Dodano do słownika ang-pol!");
+            alert.setHeaderText("Dodano do słownika");
             //1-0: pol-ang
         } else if (sourceLang.getSelectionModel().isSelected(1) && resultLang.getSelectionModel().isSelected(0)){
             Dictionary.getPolishDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
             Dictionary.getEngDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
-            alert.setHeaderText("Dodano do słownika pol-ang!");
+            alert.setHeaderText("Dodano do słownika");
         } else {
             alert.setHeaderText("Brak wsparcia dla wybranego słownika");
         }

@@ -1,6 +1,7 @@
 package main_window;
 
 import dictionary.Dictionary;
+import file.GetFromFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 import java.awt.*;
 import java.io.File;
@@ -50,6 +52,7 @@ public class MainWindowController {
             Dictionary.getPolishDictionary().insert("żaba", "frog");
             Dictionary.getPolishDictionary().insert("kot", "cat");
             Dictionary.getPolishDictionary().insert("kot", "kitten");
+            GetFromFile.fromAngToPol();
     }
 
     private void onAddButton(ActionEvent e) {
