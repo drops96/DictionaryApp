@@ -82,12 +82,16 @@ public class AddEditWindowController {
         //TODO
         //Jakaś lepsza metoda wyboru do czego dodajemy?
         //0-1: ang-pol
+
+
         if (sourceLang.getSelectionModel().isSelected(0) && resultLang.getSelectionModel().isSelected(1)){
             Dictionary.getEngDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
+            Dictionary.getPolishDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
             alert.setHeaderText("Dodano do słownika ang-pol!");
             //1-0: pol-ang
         } else if (sourceLang.getSelectionModel().isSelected(1) && resultLang.getSelectionModel().isSelected(0)){
             Dictionary.getPolishDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
+            Dictionary.getEngDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
             alert.setHeaderText("Dodano do słownika pol-ang!");
         } else {
             alert.setHeaderText("Brak wsparcia dla wybranego słownika");
