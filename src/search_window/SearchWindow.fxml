@@ -53,7 +53,7 @@
                 <Label text="Wybierz język:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                 <ChoiceBox fx:id="lang" prefWidth="150.0" GridPane.columnIndex="1">
                 <items>
-                    <FXCollections fx:factory="observableArrayList">
+                    <FXCollections fx:id="choiceLang" fx:factory="observableArrayList">
                         <String fx:value="angielsko-polski" />
                         <String fx:value="polsko-angielski" />
                         <String fx:value="niemiecko-polski" />
@@ -63,7 +63,7 @@
                 </ChoiceBox>
                 <TextField fx:id="wordText" promptText="Wprowadź słowo..." GridPane.columnIndex="2" />
                 <Button fx:id="returnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Powrót do menu" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                <TextArea fx:id="translationArea" prefHeight="200.0" prefWidth="200.0" text="1. Znaczenie pierwsze" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <TextArea fx:id="translationArea" prefHeight="200.0" prefWidth="200.0" text="" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" fx:id="searchButton" text="Wyszukaj" GridPane.columnIndex="3" />
             </children>
         </GridPane>
