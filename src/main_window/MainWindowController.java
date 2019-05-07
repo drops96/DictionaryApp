@@ -50,8 +50,8 @@ public class MainWindowController {
             Dictionary.getEngDictionary().insert("cat", "kot");
             Dictionary.getPolishDictionary().insert("kot", "cat");
             Dictionary.getPolishDictionary().insert("kot", "kitten");
-            GetFromFile.fromAngToPol();
-            GetFromFile.fromPolToAng();
+            GetFromFile.addAngToPol();
+            GetFromFile.addPolToAng();
 
 
     }

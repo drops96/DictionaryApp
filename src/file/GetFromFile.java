@@ -9,9 +9,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GetFromFile {
-    public static void fromAngToPol() {
+    public static void addAngToPol() {
         try {
-            File file = new File("ang-pol.txt");
+            File file = new File("angpol.txt");
             Scanner in = new Scanner(file);
             while (in.hasNextLine()) {
                 String word = in.nextLine();
@@ -28,9 +28,9 @@ public class GetFromFile {
     }
 
 
-    public static void fromPolToAng() {
+    public static void addPolToAng() {
         try {
-            File filee = new File("pol-ang.txt");
+            File filee = new File("polang.txt");
             Scanner input = new Scanner(filee);
             while (input.hasNextLine()) {
                 String word = input.nextLine();
