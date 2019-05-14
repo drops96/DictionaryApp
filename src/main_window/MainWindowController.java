@@ -1,7 +1,7 @@
 package main_window;
 
 import dictionary.Dictionary;
-import file.GetFromFile;
+import file.FileOperations;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,13 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public class MainWindowController {
     @FXML
@@ -45,13 +39,13 @@ public class MainWindowController {
             Dictionary.getEngDictionary().insert("mouse", "mysz");
             Dictionary.getEngDictionary().insert("car", "samochod");
             Dictionary.getEngDictionary().insert("crow", "wrona");
-            Dictionary.getEngDictionary().insert("elephant", "slon");
+            Dictionary.getEngDictionary().insert("elephant", "słon");
             Dictionary.getEngDictionary().insert("yeti", "yeti");
             Dictionary.getEngDictionary().insert("cat", "kot");
             Dictionary.getPolishDictionary().insert("kot", "cat");
+            Dictionary.getPolishDictionary().insert("słoń", "elephant");
             Dictionary.getPolishDictionary().insert("kot", "kitten");
-            GetFromFile.addAngToPol();
-            GetFromFile.addPolToAng();
+            FileOperations.addToDictionary();
 
 
     }

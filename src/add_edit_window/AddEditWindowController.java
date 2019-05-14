@@ -1,6 +1,7 @@
 package add_edit_window;
 
 import dictionary.Dictionary;
+import file.FileOperations;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class AddEditWindowController {
     @FXML
@@ -94,6 +97,12 @@ public class AddEditWindowController {
                 result2 = Dictionary.getPolishDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
             } else result2 = false;
             if (result1 && result2){
+                try{
+                FileOperations.saveDicitionary(wordText.getText().toLowerCase(),translationText.getText().toLowerCase());
+            }
+                catch (IOException f){
+                f.printStackTrace();
+            }
                 alert.setHeaderText("Dodano do słownika!");
             } else alert.setHeaderText("Błąd dodawania do słownika!");
             //1-0: pol-ang
@@ -105,6 +114,12 @@ public class AddEditWindowController {
                 result2 = Dictionary.getEngDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
             } else result2 = false;
             if (result1 && result2){
+                try {
+                    FileOperations.saveDicitionary(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
+                }
+                catch (IOException g){
+                    g.printStackTrace();
+                }
                 alert.setHeaderText("Dodano do słownika!");
             } else alert.setHeaderText("Błąd dodawania do słownika!");
         } else {
