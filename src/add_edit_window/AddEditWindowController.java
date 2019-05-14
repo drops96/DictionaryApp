@@ -82,17 +82,31 @@ public class AddEditWindowController {
         //TODO
         //Jakaś lepsza metoda wyboru do czego dodajemy?
         //0-1: ang-pol
-
-
-        if (sourceLang.getSelectionModel().isSelected(0) && resultLang.getSelectionModel().isSelected(1)){
-            Dictionary.getEngDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
-            Dictionary.getPolishDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
-            alert.setHeaderText("Dodano do słownika");
+        //0-1: ang-pol
+        if (wordText.getText().isEmpty() || translationText.getText().isEmpty()){
+            alert.setHeaderText("Puste pole!");
+        }
+        else if (sourceLang.getSelectionModel().isSelected(0) && resultLang.getSelectionModel().isSelected(1)){
+            boolean result1 = Dictionary.getEngDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
+            boolean result2;
+            //Jeśli pierwszy wyraz nieprawidłowy, nie próbuj dodać w drugą stronę (bo mogłoby zadziałać - tłumaczenia to Stringi niekontrolowane)
+            if (result1) {
+                result2 = Dictionary.getPolishDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
+            } else result2 = false;
+            if (result1 && result2){
+                alert.setHeaderText("Dodano do słownika!");
+            } else alert.setHeaderText("Błąd dodawania do słownika!");
             //1-0: pol-ang
         } else if (sourceLang.getSelectionModel().isSelected(1) && resultLang.getSelectionModel().isSelected(0)){
-            Dictionary.getPolishDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
-            Dictionary.getEngDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
-            alert.setHeaderText("Dodano do słownika");
+            boolean result1 = Dictionary.getPolishDictionary().insert(wordText.getText().toLowerCase(), translationText.getText().toLowerCase());
+            boolean result2;
+            if (result1){
+                //Jak wyżej
+                result2 = Dictionary.getEngDictionary().insert(translationText.getText().toLowerCase(), wordText.getText().toLowerCase());
+            } else result2 = false;
+            if (result1 && result2){
+                alert.setHeaderText("Dodano do słownika!");
+            } else alert.setHeaderText("Błąd dodawania do słownika!");
         } else {
             alert.setHeaderText("Brak wsparcia dla wybranego słownika");
         }

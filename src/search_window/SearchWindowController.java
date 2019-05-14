@@ -68,13 +68,22 @@ public class SearchWindowController {
     }
 
     private void onSearch(ActionEvent e){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Komunikat");
         //0: ang-pol
-        if (lang.getSelectionModel().isSelected(0)){
+        if (wordText.getText().isEmpty()){
+            alert.setHeaderText("Puste pole");
+            alert.showAndWait();
+        }
+        else if (lang.getSelectionModel().isSelected(0)){
             translationArea.setText(Dictionary.getEngDictionary().search(wordText.getText().toLowerCase()));
         }
         //1: pol-ang
         else if (lang.getSelectionModel().isSelected(1)){
             translationArea.setText(Dictionary.getPolishDictionary().search(wordText.getText().toLowerCase()));
-        }else throw new IllegalArgumentException("Brak wsparcia wybranego słownika!");
+        }else {
+            alert.setHeaderText("Brak wsparcia dla wybranego słownika");
+            alert.showAndWait();
+        }
     }
 }

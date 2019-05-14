@@ -1,5 +1,7 @@
 package dictionary;
 
+import javafx.scene.control.Alert;
+
 public class Trie {
     private TrieNode root;
     private Alphabet alphabet;
@@ -9,7 +11,8 @@ public class Trie {
         root = new TrieNode(a.getCharCount());
     }
 
-    public void insert(String word, String translation) {
+    public boolean insert(String word, String translation) {
+        if (!checkAllowedChars(word)) return false;
         TrieNode p = root;
         //Dla kazdej litery w wyrazie
         for(int i=0; i<word.length(); i++){
@@ -33,6 +36,7 @@ public class Trie {
         p.isEnd=true;
         //Ustaw tlumaczenie
         p.addTranslation(translation);
+        return true;
     }
 
     public String search(String word) {
@@ -47,6 +51,7 @@ public class Trie {
     }
 
     public TrieNode searchNode(String s){
+        if (!checkAllowedChars(s)) return null;
         TrieNode p = root;
         for(int i=0; i<s.length(); i++){
             char c= s.charAt(i);
@@ -60,5 +65,21 @@ public class Trie {
         if(p==root)
             return null;
         return p;
+    }
+
+    boolean checkAllowedChars(String word) {
+        try {
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                int index = alphabet.getCharIndex(c);
+            }
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText("Niedozwolony znak w wyrazie!");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
     }
 }
