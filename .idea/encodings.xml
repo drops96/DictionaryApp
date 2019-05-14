@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/dictionary/Trie.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/file/FileOperations.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/Trie.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/file/FileOperations.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/TrieNode.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/PolishAlphabet.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/EnglishAlphabet.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/Dicitonary.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/dictionary/Alphabet.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/add_edit_window/AddEditWindowController" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/app/DicitonaryApp.java" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/main_window/MainWindowController" charset="UTF-8" />
+      <file url="file://$PROJECT_DIR$/src/search_window/SearchWindowController" charset="UTF-8" />
+
   </component>
 </project>
