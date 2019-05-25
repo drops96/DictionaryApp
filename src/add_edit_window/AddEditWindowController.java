@@ -2,6 +2,7 @@ package add_edit_window;
 
 import dictionary.Dictionary;
 import file.FileOperations;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AddEditWindowController {
+    @FXML
+    private Button searchButton;
+    @FXML
+    private ListView translationListView;
+    @FXML
+    private Button deleteTranslationButton;
+    @FXML
+    private Button deleteWordButton;
     @FXML
     private Button returnButton;
     @FXML
@@ -34,6 +43,10 @@ public class AddEditWindowController {
     private ChoiceBox sourceLang;
     @FXML
     private ChoiceBox resultLang;
+    @FXML
+    private ChoiceBox deleteDictionary;
+    @FXML
+    private TextField wordToDelete;
 
     @FXML
     private void initialize() {
@@ -42,8 +55,12 @@ public class AddEditWindowController {
         aboutMenu.setOnAction(this::onAboutMenu);
         addWordButton.setOnAction(this::onAddWordButton);
         openDictionary.setOnAction(this::onopenDictionary);
+        deleteWordButton.setOnAction(this::onDeleteButton);
+        searchButton.setOnAction(this::onSearchButton);
+        deleteTranslationButton.setOnAction(this::onDeleteTranslationButton);
         sourceLang.getSelectionModel().select(0);
         resultLang.getSelectionModel().select(1);
+        deleteDictionary.getSelectionModel().select(0);
     }
 
 
@@ -128,5 +145,55 @@ public class AddEditWindowController {
         alert.showAndWait();
     }
 
+    private void onDeleteButton(ActionEvent e){
+        try {
+            Dictionary.getEngDictionary().delete(wordToDelete.getText().toLowerCase());
+            translationListView.getItems().clear();
+            wordToDelete.setText("");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private void loadTranslations(){
+        ObservableList<String> result;
+        if (deleteDictionary.getSelectionModel().isSelected(0)){
+            result = Dictionary.getEngDictionary().getTranslationsAsList(wordToDelete.getText().toLowerCase());
+        } else result = Dictionary.getPolishDictionary().getTranslationsAsList(wordToDelete.getText().toLowerCase());
+        translationListView.getItems().clear();
+        if (result != null){
+            translationListView.getItems().addAll(result);
+            translationListView.getSelectionModel().select(0);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText("Nie znaleziono słowa!");
+            alert.showAndWait();
+        }
+    }
+
+    private void onSearchButton(ActionEvent e){
+        loadTranslations();
+    }
+
+    private void onDeleteTranslationButton(ActionEvent e){
+        boolean result;
+        if (translationListView.getItems().size() == 1){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText("Nie możesz usunąć jedynego tłumaczenia!");
+            alert.showAndWait();
+            return;
+        }
+        if (deleteDictionary.getSelectionModel().isSelected(0)){
+            result = Dictionary.getEngDictionary().deleteTranslation(wordToDelete.getText().toLowerCase(), (String)translationListView.getSelectionModel().getSelectedItem());
+        } else result = Dictionary.getPolishDictionary().deleteTranslation(wordToDelete.getText().toLowerCase(), (String)translationListView.getSelectionModel().getSelectedItem());
+        if (!result){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Komunikat");
+            alert.setHeaderText("Błąd usuwania tłumaczenia!");
+            alert.showAndWait();
+        } else loadTranslations();
+    }
 }
 

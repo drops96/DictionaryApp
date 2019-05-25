@@ -1,5 +1,8 @@
 package dictionary;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +12,6 @@ class TrieNode {
     private List<String> translations;
 
     TrieNode(int size) {
-        //26 bo tyle ma angielski alfabet
         arr = new TrieNode[size];
         translations = new ArrayList<>();
     }
@@ -37,4 +39,17 @@ class TrieNode {
         }
     }
 
+    void deleteAllTranslations(){
+        translations.clear();
+    }
+
+    void deleteTranslation(String translation){
+        if (!translations.remove(translation)){
+            System.out.println("Błąd usuwania tłumaczenia!");
+        }
+    }
+
+    ObservableList<String> getTranslationList(){
+        return FXCollections.observableList(translations);
+    }
 }

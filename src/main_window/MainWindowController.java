@@ -45,7 +45,8 @@ public class MainWindowController {
             Dictionary.getPolishDictionary().insert("kot", "cat");
             Dictionary.getPolishDictionary().insert("słoń", "elephant");
             Dictionary.getPolishDictionary().insert("kot", "kitten");
-            FileOperations.addToDictionary();
+            //Tymaczasowo wyłaczam
+            //FileOperations.addToDictionary();
 
 
     }
