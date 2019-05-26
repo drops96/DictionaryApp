@@ -36,19 +36,11 @@ public class MainWindowController {
             quitMenu.setOnAction(this::onQuitMenu);
             aboutMenu.setOnAction(this::onAboutMenu);
             openDictionary.setOnAction(this::onopenDictionary);
-            Dictionary.getEngDictionary().insert("mouse", "mysz");
-            Dictionary.getEngDictionary().insert("car", "samochod");
-            Dictionary.getEngDictionary().insert("crow", "wrona");
-            Dictionary.getEngDictionary().insert("elephant", "słon");
-            Dictionary.getEngDictionary().insert("yeti", "yeti");
-            Dictionary.getEngDictionary().insert("cat", "kot");
-            Dictionary.getPolishDictionary().insert("kot", "cat");
-            Dictionary.getPolishDictionary().insert("słoń", "elephant");
-            Dictionary.getPolishDictionary().insert("kot", "kitten");
-            //Tymaczasowo wyłaczam
-            //FileOperations.addToDictionary();
-
-
+            //Załaduj tylko raz - przy uruchamianiu programu
+            if (!Dictionary.isInitialized()){
+                FileOperations.addToDictionary();
+                Dictionary.setInitialized(true);
+            }
     }
 
     private void onAddButton(ActionEvent e) {

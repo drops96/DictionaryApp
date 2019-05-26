@@ -146,8 +146,34 @@ public class AddEditWindowController {
     }
 
     private void onDeleteButton(ActionEvent e){
+        //TODO
+        //To trzeba też symetrycznie usuwać - tzn. z listy tłumaczeń w przeciwnym języku usunięte słowo
         try {
-            Dictionary.getEngDictionary().delete(wordToDelete.getText().toLowerCase());
+            String word = wordToDelete.getText().toLowerCase();
+            if (deleteDictionary.getSelectionModel().isSelected(0)){
+                //Znajdź wszystkie wyrazy których ten wyraz jest tłumaczeniem i usuń go z list
+                for (String s: Dictionary.getEngDictionary().getTranslationsAsList(word)) {
+                    Dictionary.getPolishDictionary().deleteTranslation(s, word);
+                    //Co wtedy jeśli dany wyraz był jedynym tłumaczeniem któregoś? Jego też usuwamy?
+                    //Ale co wtedy z polityką zostawiania ostatniego tłumaczenia?
+                    //Na razie uznajemy że usuwamy to słowo bez tłumaczeń
+                    if (Dictionary.getPolishDictionary().getTranslationsAsList(s).size() == 0){
+                        Dictionary.getPolishDictionary().delete(s);
+                    }
+                }
+                Dictionary.getEngDictionary().delete(word);
+
+                FileOperations.removeFromDictionary(word, 0);
+            } else {
+                for (String s: Dictionary.getPolishDictionary().getTranslationsAsList(word)) {
+                    if (Dictionary.getEngDictionary().getTranslationsAsList(s).size() == 0){
+                        Dictionary.getEngDictionary().delete(s);
+                    }
+                    Dictionary.getEngDictionary().deleteTranslation(s, word);
+                }
+                Dictionary.getPolishDictionary().delete(word);
+                FileOperations.removeFromDictionary(word, 1);
+            }
             translationListView.getItems().clear();
             wordToDelete.setText("");
         }catch (Exception ex){
@@ -178,6 +204,8 @@ public class AddEditWindowController {
 
     private void onDeleteTranslationButton(ActionEvent e){
         boolean result;
+        String word = wordToDelete.getText().toLowerCase();
+        String selected = (String)translationListView.getSelectionModel().getSelectedItem();
         if (translationListView.getItems().size() == 1){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Komunikat");
@@ -186,8 +214,23 @@ public class AddEditWindowController {
             return;
         }
         if (deleteDictionary.getSelectionModel().isSelected(0)){
-            result = Dictionary.getEngDictionary().deleteTranslation(wordToDelete.getText().toLowerCase(), (String)translationListView.getSelectionModel().getSelectedItem());
-        } else result = Dictionary.getPolishDictionary().deleteTranslation(wordToDelete.getText().toLowerCase(), (String)translationListView.getSelectionModel().getSelectedItem());
+            result = Dictionary.getEngDictionary().deleteTranslation(word, selected);
+            //Co ze słowem, którego to mogło być jedyne tłumaczenie
+            //TODO
+            //Powinno usunąć to słowo, jeżeli usuneliśmy z listy to jako jego jedyne tłumaczenie
+            if (Dictionary.getPolishDictionary().getTranslationsAsList(selected).size() == 1){
+                Dictionary.getPolishDictionary().delete(selected);
+            } else Dictionary.getPolishDictionary().deleteTranslation(selected, word);
+            //Usuń z pliku konkretny rekord
+            FileOperations.removeFromDictionary(word, selected);
+        } else {
+            result = Dictionary.getPolishDictionary().deleteTranslation(word, selected);
+            if (Dictionary.getEngDictionary().getTranslationsAsList(selected).size() == 1){
+                Dictionary.getEngDictionary().delete(selected);
+            } else Dictionary.getEngDictionary().deleteTranslation(selected, word);
+            //Tutaj na odwrót, bo w pliku zawsze ang-pol, a tu wybieramy ang wyraz jako tłumaczenie
+            FileOperations.removeFromDictionary(selected, word);
+        }
         if (!result){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Komunikat");
