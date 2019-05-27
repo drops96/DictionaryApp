@@ -35,7 +35,7 @@ public class MainWindowController {
             quitButton.setOnAction(this::onQuitButton);
             quitMenu.setOnAction(this::onQuitMenu);
             aboutMenu.setOnAction(this::onAboutMenu);
-            openDictionary.setOnAction(this::onopenDictionary);
+            //openDictionary.setOnAction(this::onopenDictionary);
             //Załaduj tylko raz - przy uruchamianiu programu
             if (!Dictionary.isInitialized()){
                 FileOperations.addToDictionary();

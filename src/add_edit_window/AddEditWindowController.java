@@ -54,7 +54,7 @@ public class AddEditWindowController {
         quitMenu.setOnAction(this::onQuitMenu);
         aboutMenu.setOnAction(this::onAboutMenu);
         addWordButton.setOnAction(this::onAddWordButton);
-        openDictionary.setOnAction(this::onopenDictionary);
+        //openDictionary.setOnAction(this::onopenDictionary);
         deleteWordButton.setOnAction(this::onDeleteButton);
         searchButton.setOnAction(this::onSearchButton);
         deleteTranslationButton.setOnAction(this::onDeleteTranslationButton);

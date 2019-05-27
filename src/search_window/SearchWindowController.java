@@ -32,7 +32,7 @@ public class SearchWindowController {
         returnButton.setOnAction(this::onReturnButton);
         quitMenu.setOnAction(this::onQuitMenu);
         aboutMenu.setOnAction(this::onAboutMenu);
-        openDictionary.setOnAction(this::onopenDictionary);
+        //openDictionary.setOnAction(this::onopenDictionary);
         searchButton.setOnAction(this::onSearch);
         lang.getSelectionModel().select(0);
 

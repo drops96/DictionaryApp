@@ -19,7 +19,6 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Plik">
                     <items>
-                        <MenuItem fx:id="openDictionary" mnemonicParsing="false" text="Wczytaj plik języka" />
                         <MenuItem fx:id="quitMenu" mnemonicParsing="false" text="Zamknij" />
                     </items>
                 </Menu>
@@ -58,7 +57,7 @@
                 </Label>
                 <ButtonBar prefHeight="224.0" prefWidth="334.0" GridPane.rowIndex="2">
                     <buttons>
-                        <Button fx:id="addButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="73.0" prefWidth="203.0" text="Dodaj tłumaczenie" textAlignment="JUSTIFY" />
+                        <Button fx:id="addButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="73.0" prefWidth="203.0" text="Edytuj słownik" textAlignment="JUSTIFY" />
                     </buttons>
                 </ButtonBar>
                 <Button fx:id="searchButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="73.0" prefWidth="203.0" text="Wyszukaj tłumaczenie" textAlignment="JUSTIFY" GridPane.columnIndex="2" GridPane.rowIndex="2" />

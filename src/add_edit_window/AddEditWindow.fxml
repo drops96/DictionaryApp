@@ -24,7 +24,6 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Plik">
                     <items>
-                        <MenuItem fx:id="openDictionary" mnemonicParsing="false" text="Wczytaj plik języka"/>
                         <MenuItem fx:id="quitMenu" mnemonicParsing="false" text="Zamknij"/>
                     </items>
                 </Menu>
@@ -62,7 +61,6 @@
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="angielski"/>
                             <String fx:value="polski"/>
-                            <String fx:value="niemiecki"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -79,7 +77,6 @@
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="angielski"/>
                             <String fx:value="polski"/>
-                            <String fx:value="niemiecki"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
